@@ -1,4 +1,5 @@
 from django.db import models
+from geography.models import ZipCode
 
 class Person(models.Model):
     id = models.BigAutoField(primary_key=True)
@@ -17,5 +18,10 @@ class Person(models.Model):
         return {"email": "to1@example.com"}
 
     contact_info = JSONField("ContactInfo", default=contact_default)
+
+    def save(
+        self, force_insert=False, force_update=False, using=None, update_fields=None
+    ):
+        return self
 
 
