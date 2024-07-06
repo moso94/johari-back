@@ -7,6 +7,12 @@ class Person(models.Model):
     Email = models.EmailField(validators=mailbox, primary_key=True)
     created = models.DateTimeField(db_default=Now())
 
+    def __str__(self):
+        return self.first_name
+
+    def __str__(self):
+        return self.last_name
+
     def contact_default():
         return {"email": "to1@example.com"}
 
