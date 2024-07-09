@@ -1,5 +1,7 @@
+import datetime
 from django.db import models
 from geography.models import ZipCode
+from django.utils import timezone
 
 class Person(models.Model):
     id = models.BigAutoField(primary_key=True)
@@ -23,5 +25,18 @@ class Person(models.Model):
         self, force_insert=False, force_update=False, using=None, update_fields=None
     ):
         return self
+class Question(models.Model):
+    # ...
+    def __str__(self):
+        return self.question_text
 
 
+class Choice(models.Model):
+    # ...
+    def __str__(self):
+        return self.choice_text
+
+class Question(models.Model):
+    # ...
+    def was_published_recently(self):
+        return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
