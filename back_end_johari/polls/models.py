@@ -1,6 +1,6 @@
 import datetime
 from django.db import models
-from geography.models import ZipCode
+#from geography.models import ZipCode
 from django.utils import timezone
 
 class Person(models.Model):
@@ -15,6 +15,8 @@ class Person(models.Model):
 
     def __str__(self):
         return self.last_name
+    def __str__(self):
+        return self.Email
 
     def contact_default():
         return {"email": "to1@example.com"}
