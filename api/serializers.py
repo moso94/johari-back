@@ -1,4 +1,4 @@
-from .models import User, Adjective, Project
+from .models import User, Adjective, Project, FeedBack
 from rest_framework import serializers
 
 class ProjectSerializers(serializers.ModelSerializer):
@@ -14,5 +14,13 @@ class AdjectiveSerializers(serializers.ModelSerializer):
     class Meta:
         model = Adjective
         fields = ['id', 'title', 'created_at', 'updated_at']
+
+class FeedBackSerializers(serializers.ModelSerializer):
+    projects = ProjectSerializers(many = True, read_only = True)
+    users = UserSerializers(many = True, read_only = True)
+    adjectives = AdjectiveSerializers(many = True, read_only = True)
+    class Meta:
+        model = FeedBack
+        fields = ['id', 'created_at', 'updated_at', 'projects', 'users', 'adjectives']
 
     
