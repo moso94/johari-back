@@ -1,0 +1,26 @@
+{
+    "_meta": {
+        "hash": {
+            "sha256": "4dadc84276a99a96724567096ee4d58f7eb14d4f17425bd64a98d1ad10098101"
+        },
+        "pipfile-spec": 6,
+        "requires": {
+            "python_version": "3.12"
+        },
+        "sources": [
+            {
+                "name": "pypi",
+                "url": "https://pypi.org/simple",
+                "verify_ssl": true
+            }
+        ]
+    },
+    "default": {
+        "django": "==5.0.6",
+        "django-filter": "*",
+        "djangorestframework": "==3.15.2",
+        "markdown": "*",
+        "python": "==3.12"
+    },
+    "develop": {}
+}

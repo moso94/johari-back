@@ -1,5 +1,6 @@
-Django==5.0.6
+Django
 djangorestframework==3.15.2
 Markdown
 django-filter
-python==3.12
+
+
