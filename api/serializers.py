@@ -23,4 +23,6 @@ class FeedBackSerializers(serializers.ModelSerializer):
         model = FeedBack
         fields = ['id', 'created_at', 'updated_at', 'projects', 'users', 'adjectives']
 
+
+
     
