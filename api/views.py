@@ -1,9 +1,7 @@
-from django.shortcuts import render
+from rest_framework import permissions, viewsets
+
 from .models import Adjective, User
 from .serializers import AdjectiveSerializers, UserSerializers
-from rest_framework import permissions, viewsets
-from rest_framework.views import APIView
-from rest_framework.response import Response
 
 
 class AdjectiveViewSet(viewsets.ModelViewSet):
