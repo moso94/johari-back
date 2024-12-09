@@ -15,6 +15,7 @@ class Adjective(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     title = models.CharField(unique=True, max_length=100)
 
+
 class Project(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
