@@ -5,24 +5,20 @@ class ProjectSerializers(serializers.ModelSerializer):
     class Meta:
         model = Project
         fields = ['id', 'user', 'created_at', 'updated_at', 'slug']
+
 class UserSerializers(serializers.ModelSerializer):
-    projects = ProjectSerializers(many = True, read_only = True)
+    projects = ProjectSerializers(many=True, read_only=True)
+    
     class Meta:
         model = User
         fields = ['id', 'name', 'email', 'created_at', 'updated_at', 'projects']
+
 class AdjectiveSerializers(serializers.ModelSerializer):
     class Meta:
         model = Adjective
         fields = ['id', 'title', 'created_at', 'updated_at']
 
 class FeedBackSerializers(serializers.ModelSerializer):
-    projects = ProjectSerializers(many = True, read_only = True)
-    users = UserSerializers(many = True, read_only = True)
-    adjectives = AdjectiveSerializers(many = True, read_only = True)
     class Meta:
         model = FeedBack
-        fields = ['id', 'created_at', 'updated_at', 'projects', 'users', 'adjectives']
-
-
-
-    
+        fields = ['id', 'created_at', 'updated_at', 'user', 'project', 'adjectives']
