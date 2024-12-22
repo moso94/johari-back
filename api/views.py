@@ -9,7 +9,7 @@ class AdjectiveViewSet(viewsets.ModelViewSet):
     serializer_class = AdjectiveSerializers
     permission_classes = [permissions.AllowAny]
     filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
-
+    filterset_fields = ['title']  
 
 
 class AdjectiveListViewSet(viewsets.ReadOnlyModelViewSet):
@@ -21,12 +21,12 @@ class AdjectiveListViewSet(viewsets.ReadOnlyModelViewSet):
         return Adjective.objects.all()
 
 
-
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all().order_by('-id')
     serializer_class = UserSerializers
     permission_classes = [permissions.AllowAny]
     filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
+    filterset_fields = ['name', 'email']  
 
 
 class UserListViewSet(viewsets.ReadOnlyModelViewSet):
@@ -35,5 +35,6 @@ class UserListViewSet(viewsets.ReadOnlyModelViewSet):
     permission_classes = [permissions.IsAdminUser]
     filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
     filterset_fields = ['name', 'email']
+
     def get_queryset(self):
         return User.objects.all()

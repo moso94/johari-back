@@ -3,8 +3,8 @@ from .models import User, Adjective, Project, FeedBack
 
 class UserAdmin(admin.ModelAdmin):
     list_display = ("name", "email", "created_at", "updated_at")
-    search_fields = ("name", "email")  # Add search capability
-    list_filter = ("created_at",)  # Add filter capability
+    search_fields = ("name", "email")  
+    list_filter = ("created_at",)  
 
 class AdjectiveAdmin(admin.ModelAdmin):
     list_display = ("title", "created_at", "updated_at")
