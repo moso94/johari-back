@@ -17,8 +17,7 @@ class AdjectiveListViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = AdjectiveSerializers
     permission_classes = [permissions.AllowAny]
 
-    def get_queryset(self):
-        return Adjective.objects.all()
+    # Removed redundant get_queryset method
 
 
 class UserViewSet(viewsets.ModelViewSet):
