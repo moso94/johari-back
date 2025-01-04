@@ -92,7 +92,7 @@ class ProjectViewSet(viewsets.ModelViewSet):
     filterset_fields = ['id', 'user']
 
     def get_queryset(self):
-        return Project.object.all()
+        return Project.objects.all()
 
 
 class ProjectListViewSet(viewsets.ReadOnlyModelViewSet):
@@ -103,7 +103,7 @@ class ProjectListViewSet(viewsets.ReadOnlyModelViewSet):
     filterset_fields = ['id', 'user']
 
     def get_queryset(self):
-        return Project.object.all()
+        return Project.objects.all()
 
 
 class ProjectDetailViewSet(viewsets.ReadOnlyModelViewSet):
@@ -114,7 +114,7 @@ class ProjectDetailViewSet(viewsets.ReadOnlyModelViewSet):
     filterset_fields = ['id', 'user']
 
     def get_queryset(self):
-        return Project.object.all()
+        return Project.objects.all()
 
 class ProjectCreateViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Project.objects.all()
@@ -135,7 +135,7 @@ class ProjectUpdateViewSet(viewsets.ReadOnlyModelViewSet):
     filterset_fields = ['id', 'user']
 
     def get_queryset(self):
-        return Project.object.all()
+        return Project.objects.all()
 
 class ProjectDeleteViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Project.objects.all()
@@ -145,7 +145,7 @@ class ProjectDeleteViewSet(viewsets.ReadOnlyModelViewSet):
     filterset_fields = ['id', 'user']
 
     def get_queryset(self):
-        return Project.object.all()
+        return Project.objects.all()
 
 
 
@@ -155,7 +155,7 @@ class ProjectFeedbackViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = FeedBackSerializers
     permission_classes = [permissions.AllowAny]
     filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
-    filterset_fields = ['id', 'user']
+    filterset_fields = ['id', 'user', 'project']
 
     def get_queryset(self):
         return FeedBack.objects.all()
@@ -166,7 +166,7 @@ class FeedBackViewSet(viewsets.ModelViewSet):
     serializer_class = FeedBackSerializers
     permission_classes = [permissions.AllowAny]
     filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
-    filterset_fields = ['id', 'user']
+    filterset_fields = ['id', 'user', 'project']
 
     def get_queryset(self):
         return FeedBack.objects.all()
@@ -176,7 +176,7 @@ class FeedBackListViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = FeedBackSerializers
     permission_classes = [permissions.AllowAny]
     filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
-    filterset_fields = ['id', 'user']
+    filterset_fields = ['id', 'user', 'project']
 
     def get_queryset(self):
         return FeedBack.objects.all()
@@ -186,7 +186,7 @@ class FeedBackDetailViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = FeedBackSerializers
     permission_classes = [permissions.AllowAny]
     filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
-    filterset_fields = ['id', 'user']
+    filterset_fields = ['id', 'user', 'project']
 
     def get_queryset(self):
         return FeedBack.objects.all()
@@ -196,7 +196,7 @@ class FeedBackUpdateViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = FeedBackSerializers
     permission_classes = [permissions.AllowAny]
     filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
-    filterset_fields = ['id', 'user']
+    filterset_fields = ['id', 'user', 'project']
 
     def get_queryset(self):
         return FeedBack.objects.all()
@@ -206,7 +206,7 @@ class FeedBackDeleteViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = FeedBackSerializers
     permission_classes = [permissions.AllowAny]
     filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
-    filterset_fields = ['id', 'user']
+    filterset_fields = ['id', 'user', 'project']
 
     def get_queryset(self):
         return FeedBack.objects.all()
