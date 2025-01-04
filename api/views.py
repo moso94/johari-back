@@ -1,5 +1,3 @@
-from cProfile import Profile
-
 import django_filters.rest_framework
 from rest_framework import permissions, viewsets
 from .models import Adjective, User, Project, FeedBack
@@ -18,7 +16,7 @@ class StandardResultsSetPagination(PageNumberPagination):
     max_page_size = 100
 
 
-class AdjectiveViewSet(viewsets.ModelViewSet):
+class AdjectiveViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Adjective.objects.all().order_by('-id')
     serializer_class = AdjectiveSerializers
     permission_classes = [permissions.AllowAny]
