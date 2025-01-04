@@ -64,17 +64,6 @@ class UserDetailViewSet(viewsets.ReadOnlyModelViewSet):
         return User.objects.all()
 
 
-class ProfileViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = Profile.objects.all()
-    serializer_class = UserSerializers
-    permission_classes = [permissions.IsAdminUser]
-    filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
-    filterset_fields = ['name', 'email']
-
-
-    def get_queryset(self):
-        return Profile.object.all()
-
 class ProjectViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Project.objects.all()
     serializer_class = ProjectSerializers
