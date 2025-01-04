@@ -14,6 +14,7 @@ class UserSerializers(serializers.ModelSerializer):
         fields = ['id', 'name', 'email', 'created_at', 'updated_at', 'projects']
 
 class AdjectiveSerializers(serializers.ModelSerializer):
+
     class Meta:
         model = Adjective
         fields = ['id', 'title', 'created_at', 'updated_at']
