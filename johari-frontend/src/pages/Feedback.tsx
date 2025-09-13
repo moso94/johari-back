@@ -35,7 +35,9 @@ const Feedback: React.FC = () => {
     mutationFn: async (data: { adjectives: number[] }) => {
       // This is a placeholder - you'll need to implement the feedback endpoint
       console.log('Submitting feedback:', data);
-      return Promise.resolve({ success: true });
+      // For now, just simulate success
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      return { success: true };
     },
     onSuccess: () => {
       setIsSuccess(true);

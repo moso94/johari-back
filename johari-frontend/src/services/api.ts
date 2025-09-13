@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { User, Adjective, Project, CreateUserRequest, CreateProjectRequest } from '../types';
 
-const API_BASE_URL = 'http://localhost:8000/api/V1';
+const API_BASE_URL = 'http://127.0.0.1:8000/api/V1';
 
 const api = axios.create({
   baseURL: API_BASE_URL,
@@ -26,16 +26,6 @@ export const adjectivesApi = {
   create: (data: { title: string }) => api.post<Adjective>('/adjs/', data),
   update: (id: number, data: { title: string }) => api.patch<Adjective>(`/adjs/${id}/`, data),
   delete: (id: number) => api.delete(`/adjs/${id}/`),
-};
-
-// Projects API (Note: This endpoint might need to be added to your Django backend)
-export const projectsApi = {
-  getAll: () => api.get<Project[]>('/projects/'),
-  getById: (id: number) => api.get<Project>(`/projects/${id}/`),
-  getBySlug: (slug: string) => api.get<Project>(`/projects/slug/${slug}/`),
-  create: (data: CreateProjectRequest) => api.post<Project>('/projects/', data),
-  update: (id: number, data: Partial<CreateProjectRequest>) => api.patch<Project>(`/projects/${id}/`, data),
-  delete: (id: number) => api.delete(`/projects/${id}/`),
 };
 
 export default api;

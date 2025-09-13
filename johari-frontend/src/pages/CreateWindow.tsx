@@ -34,7 +34,7 @@ const CreateWindow: React.FC = () => {
     onSuccess: (response) => {
       setIsSuccess(true);
       setTimeout(() => {
-        navigate(`/feedback/${response.data.id}`);
+        navigate('/');
       }, 2000);
     },
     onError: (error) => {

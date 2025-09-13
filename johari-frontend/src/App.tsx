@@ -26,6 +26,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/create" element={<CreateWindow />} />
               <Route path="/feedback/:userId" element={<Feedback />} />
+              <Route path="/feedback" element={<Feedback />} />
             </Routes>
           </main>
         </div>
