@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { User, Mail, Sparkles, CheckCircle } from 'lucide-react';
@@ -31,7 +31,7 @@ const CreateWindow: React.FC = () => {
   // Create user mutation
   const createUserMutation = useMutation({
     mutationFn: usersApi.create,
-    onSuccess: (response) => {
+    onSuccess: () => {
       setIsSuccess(true);
       setTimeout(() => {
         navigate('/');

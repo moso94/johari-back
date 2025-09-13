@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { User, Adjective, Project, CreateUserRequest, CreateProjectRequest } from '../types';
+import { User, Adjective, CreateUserRequest } from '../types';
 
 const API_BASE_URL = 'http://127.0.0.1:8000/api/V1';
 

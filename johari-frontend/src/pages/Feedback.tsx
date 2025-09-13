@@ -1,28 +1,21 @@
 import React, { useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { useQuery, useMutation } from '@tanstack/react-query';
+import { useNavigate } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
 import { MessageSquare, Send, CheckCircle, ArrowLeft } from 'lucide-react';
 import { useTranslation } from '../hooks/useTranslation';
 import { useLanguage } from '../hooks/useLanguage';
-import { usersApi, adjectivesApi } from '../services/api';
+import { adjectivesApi } from '../services/api';
 import AdjectiveSelector from '../components/AdjectiveSelector';
 import LoadingSpinner from '../components/LoadingSpinner';
 
 const Feedback: React.FC = () => {
   const { t } = useTranslation();
   const { isRTL } = useLanguage();
-  const { userId } = useParams<{ userId: string }>();
   const navigate = useNavigate();
 
   const [selectedAdjectives, setSelectedAdjectives] = useState<number[]>([]);
   const [isSuccess, setIsSuccess] = useState(false);
-
-  // Fetch user data
-  const { data: user, isLoading: userLoading } = useQuery({
-    queryKey: ['user', userId],
-    queryFn: () => usersApi.getById(Number(userId)).then(res => res.data),
-    enabled: !!userId
-  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Fetch adjectives
   const { data: adjectives = [], isLoading: adjectivesLoading } = useQuery({
@@ -30,60 +23,19 @@ const Feedback: React.FC = () => {
     queryFn: () => adjectivesApi.getAll().then(res => res.data)
   });
 
-  // Submit feedback mutation (Note: This endpoint needs to be implemented in your Django backend)
-  const submitFeedbackMutation = useMutation({
-    mutationFn: async (data: { adjectives: number[] }) => {
-      // This is a placeholder - you'll need to implement the feedback endpoint
-      console.log('Submitting feedback:', data);
-      // For now, just simulate success
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (selectedAdjectives.length >= 3) {
+      setIsSubmitting(true);
+      // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 1000));
-      return { success: true };
-    },
-    onSuccess: () => {
+      setIsSubmitting(false);
       setIsSuccess(true);
       setTimeout(() => {
         navigate('/');
       }, 3000);
-    },
-    onError: (error) => {
-      console.error('Error submitting feedback:', error);
-    }
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (selectedAdjectives.length >= 3) {
-      submitFeedbackMutation.mutate({
-        adjectives: selectedAdjectives
-      });
     }
   };
-
-  if (userLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <LoadingSpinner size="lg" />
-      </div>
-    );
-  }
-
-  if (!user) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">
-            {isRTL ? 'کاربر یافت نشد' : 'User not found'}
-          </h2>
-          <button
-            onClick={() => navigate('/')}
-            className="text-primary-600 hover:text-primary-700 font-medium"
-          >
-            {isRTL ? 'بازگشت به خانه' : 'Go back home'}
-          </button>
-        </div>
-      </div>
-    );
-  }
 
   if (isSuccess) {
     return (
@@ -129,25 +81,8 @@ const Feedback: React.FC = () => {
               {t('giveFeedback')}
             </h1>
             <p className="text-xl text-gray-600">
-              {t('feedbackFor', { name: user.name || user.email })}
+              {isRTL ? 'بازخورد خود را ارسال کنید' : 'Share your feedback'}
             </p>
-          </div>
-        </div>
-
-        {/* User Info Card */}
-        <div className="bg-white rounded-xl shadow-lg p-6 mb-8">
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-full flex items-center justify-center">
-              <span className="text-white font-bold text-lg">
-                {user.name ? user.name.charAt(0).toUpperCase() : user.email?.charAt(0).toUpperCase()}
-              </span>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold text-gray-900">
-                {user.name || 'Anonymous User'}
-              </h3>
-              <p className="text-gray-600">{user.email}</p>
-            </div>
           </div>
         </div>
 
@@ -182,14 +117,14 @@ const Feedback: React.FC = () => {
 
                 <button
                   type="submit"
-                  disabled={selectedAdjectives.length < 3 || submitFeedbackMutation.isPending}
+                  disabled={selectedAdjectives.length < 3 || isSubmitting}
                   className={`w-full py-4 px-6 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center gap-3 ${
-                    selectedAdjectives.length >= 3 && !submitFeedbackMutation.isPending
+                    selectedAdjectives.length >= 3 && !isSubmitting
                       ? 'bg-gradient-to-r from-primary-600 to-secondary-600 text-white hover:scale-105 shadow-lg'
                       : 'bg-gray-300 text-gray-500 cursor-not-allowed'
                   }`}
                 >
-                  {submitFeedbackMutation.isPending ? (
+                  {isSubmitting ? (
                     <LoadingSpinner size="sm" />
                   ) : (
                     <>

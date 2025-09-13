@@ -2,12 +2,10 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Eye, Home, Plus, MessageSquare } from 'lucide-react';
 import { useTranslation } from '../hooks/useTranslation';
-import { useLanguage } from '../hooks/useLanguage';
 import LanguageSwitcher from './LanguageSwitcher';
 
 const Header: React.FC = () => {
   const { t } = useTranslation();
-  const { isRTL } = useLanguage();
   const location = useLocation();
 
   const navItems = [
