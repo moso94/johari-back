@@ -28,20 +28,20 @@ const translations = {
     createWindow: 'Create Your Johari Window',
     yourName: 'Your Name',
     yourEmail: 'Your Email',
-    selectAdjectives: 'Select 5-6 adjectives that describe you',
+    selectAdjectives: 'Select 3-6 adjectives that describe you',
     selectedCount: 'Selected: {{count}}/6',
     createProject: 'Create Window',
     
     // Feedback
     giveFeedback: 'Give Feedback',
     feedbackFor: 'Feedback for {{name}}',
-    selectAdjectivesForPerson: 'Select 5-6 adjectives that describe this person',
+    selectAdjectivesForPerson: 'Select 3-6 adjectives that describe this person',
     submitFeedback: 'Submit Feedback',
     
     // Common
     loading: 'Loading...',
     error: 'Error',
-    success: 'Success',
+    success: 'Success!',
     cancel: 'Cancel',
     save: 'Save',
     edit: 'Edit',
@@ -54,7 +54,7 @@ const translations = {
     errorCreatingWindow: 'Error creating window. Please try again.',
     errorSubmittingFeedback: 'Error submitting feedback. Please try again.',
     
-    // Adjectives (sample)
+    // Adjectives
     able: 'Able',
     accepting: 'Accepting',
     adaptable: 'Adaptable',
@@ -139,20 +139,20 @@ const translations = {
     createWindow: 'پنجره جوهاری خود را بسازید',
     yourName: 'نام شما',
     yourEmail: 'ایمیل شما',
-    selectAdjectives: '۵ تا ۶ صفت که شما را توصیف می‌کند انتخاب کنید',
+    selectAdjectives: '۳ تا ۶ صفت که شما را توصیف می‌کند انتخاب کنید',
     selectedCount: 'انتخاب شده: {{count}}/۶',
     createProject: 'ایجاد پنجره',
     
     // Feedback
     giveFeedback: 'ارسال بازخورد',
     feedbackFor: 'بازخورد برای {{name}}',
-    selectAdjectivesForPerson: '۵ تا ۶ صفت که این فرد را توصیف می‌کند انتخاب کنید',
+    selectAdjectivesForPerson: '۳ تا ۶ صفت که این فرد را توصیف می‌کند انتخاب کنید',
     submitFeedback: 'ارسال بازخورد',
     
     // Common
     loading: 'در حال بارگذاری...',
     error: 'خطا',
-    success: 'موفقیت',
+    success: 'موفقیت!',
     cancel: 'لغو',
     save: 'ذخیره',
     edit: 'ویرایش',
@@ -165,7 +165,7 @@ const translations = {
     errorCreatingWindow: 'خطا در ایجاد پنجره. لطفاً دوباره تلاش کنید.',
     errorSubmittingFeedback: 'خطا در ارسال بازخورد. لطفاً دوباره تلاش کنید.',
     
-    // Adjectives (sample)
+    // Adjectives
     able: 'توانا',
     accepting: 'پذیرنده',
     adaptable: 'انطباق‌پذیر',

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useMutation, useQuery } from '@tanstack/react-query';
-import { User, Mail, Sparkles, CheckCircle } from 'lucide-react';
+import { User, Mail, Sparkles, CheckCircle, ArrowLeft } from 'lucide-react';
 import { useTranslation } from '../hooks/useTranslation';
 import { useLanguage } from '../hooks/useLanguage';
 import { usersApi, adjectivesApi } from '../services/api';
@@ -25,7 +25,8 @@ const CreateWindow: React.FC = () => {
   // Fetch adjectives
   const { data: adjectives = [], isLoading: adjectivesLoading } = useQuery({
     queryKey: ['adjectives'],
-    queryFn: () => adjectivesApi.getAll().then(res => res.data)
+    queryFn: () => adjectivesApi.getAll().then(res => res.data),
+    retry: false
   });
 
   // Create user mutation
@@ -96,39 +97,49 @@ const CreateWindow: React.FC = () => {
     <div className="min-h-screen bg-gradient-to-br from-primary-50 to-secondary-50 py-8">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-            {t('createWindow')}
-          </h1>
+        <div className="mb-8">
+          <button
+            onClick={() => navigate('/')}
+            className="flex items-center gap-2 text-gray-600 hover:text-primary-600 mb-4 transition-colors"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            {isRTL ? 'بازگشت' : 'Back'}
+          </button>
           
-          {/* Progress indicator */}
-          <div className="flex items-center justify-center gap-4 mb-8">
-            <div className={`flex items-center gap-2 ${step >= 1 ? 'text-primary-600' : 'text-gray-400'}`}>
-              <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
-                step >= 1 ? 'bg-primary-600 text-white' : 'bg-gray-200 text-gray-400'
-              }`}>
-                1
-              </div>
-              <span className="hidden sm:inline font-medium">
-                {isRTL ? 'اطلاعات شخصی' : 'Personal Info'}
-              </span>
-            </div>
+          <div className="text-center">
+            <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+              {t('createWindow')}
+            </h1>
             
-            <div className="w-12 h-0.5 bg-gray-300">
-              <div className={`h-full bg-primary-600 transition-all duration-500 ${
-                step >= 2 ? 'w-full' : 'w-0'
-              }`}></div>
-            </div>
-            
-            <div className={`flex items-center gap-2 ${step >= 2 ? 'text-primary-600' : 'text-gray-400'}`}>
-              <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
-                step >= 2 ? 'bg-primary-600 text-white' : 'bg-gray-200 text-gray-400'
-              }`}>
-                2
+            {/* Progress indicator */}
+            <div className="flex items-center justify-center gap-4 mb-8">
+              <div className={`flex items-center gap-2 ${step >= 1 ? 'text-primary-600' : 'text-gray-400'}`}>
+                <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
+                  step >= 1 ? 'bg-primary-600 text-white' : 'bg-gray-200 text-gray-400'
+                }`}>
+                  1
+                </div>
+                <span className="hidden sm:inline font-medium">
+                  {isRTL ? 'اطلاعات شخصی' : 'Personal Info'}
+                </span>
               </div>
-              <span className="hidden sm:inline font-medium">
-                {isRTL ? 'انتخاب صفات' : 'Select Traits'}
-              </span>
+              
+              <div className="w-12 h-0.5 bg-gray-300">
+                <div className={`h-full bg-primary-600 transition-all duration-500 ${
+                  step >= 2 ? 'w-full' : 'w-0'
+                }`}></div>
+              </div>
+              
+              <div className={`flex items-center gap-2 ${step >= 2 ? 'text-primary-600' : 'text-gray-400'}`}>
+                <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
+                  step >= 2 ? 'bg-primary-600 text-white' : 'bg-gray-200 text-gray-400'
+                }`}>
+                  2
+                </div>
+                <span className="hidden sm:inline font-medium">
+                  {isRTL ? 'انتخاب صفات' : 'Select Traits'}
+                </span>
+              </div>
             </div>
           </div>
         </div>

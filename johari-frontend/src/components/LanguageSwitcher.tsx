@@ -12,7 +12,7 @@ const LanguageSwitcher: React.FC = () => {
         <span className="text-sm font-medium">{currentLanguage.name}</span>
       </button>
       
-      <div className="absolute top-full mt-2 right-0 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+      <div className="absolute top-full mt-2 right-0 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 min-w-[120px]">
         {languages.map((language) => (
           <button
             key={language.code}

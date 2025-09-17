@@ -37,7 +37,7 @@ const AdjectiveSelector: React.FC<AdjectiveSelectorProps> = ({
           {t('selectAdjectives')}
         </h3>
         <span className={`text-sm px-3 py-1 rounded-full ${
-          selectedIds.length >= maxSelection 
+          selectedIds.length >= 3 
             ? 'bg-green-100 text-green-700' 
             : 'bg-gray-100 text-gray-600'
         }`}>
@@ -83,8 +83,8 @@ const AdjectiveSelector: React.FC<AdjectiveSelectorProps> = ({
         <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
           <p className="text-blue-700 text-sm">
             {isRTL 
-              ? 'لطفاً حداقل یک صفت انتخاب کنید'
-              : 'Please select at least one adjective'
+              ? 'لطفاً حداقل سه صفت انتخاب کنید'
+              : 'Please select at least 3 adjectives'
             }
           </p>
         </div>

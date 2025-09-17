@@ -20,7 +20,8 @@ const Feedback: React.FC = () => {
   // Fetch adjectives
   const { data: adjectives = [], isLoading: adjectivesLoading } = useQuery({
     queryKey: ['adjectives'],
-    queryFn: () => adjectivesApi.getAll().then(res => res.data)
+    queryFn: () => adjectivesApi.getAll().then(res => res.data),
+    retry: false
   });
 
   const handleSubmit = async (e: React.FormEvent) => {

@@ -20,6 +20,7 @@ export interface Project {
   created_at: string;
   updated_at: string;
   slug: string;
+  adjectives?: number[];
 }
 
 export interface Feedback {

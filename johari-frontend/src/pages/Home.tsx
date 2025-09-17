@@ -76,13 +76,10 @@ const Home: React.FC = () => {
                 <ArrowIcon className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
               
-              <Link
-                to="/about"
-                className="group bg-white text-gray-700 px-8 py-4 rounded-xl font-semibold text-lg border-2 border-gray-200 hover:border-primary-300 hover:text-primary-600 transition-all duration-300 btn-hover flex items-center gap-3"
-              >
+              <button className="group bg-white text-gray-700 px-8 py-4 rounded-xl font-semibold text-lg border-2 border-gray-200 hover:border-primary-300 hover:text-primary-600 transition-all duration-300 btn-hover flex items-center gap-3">
                 {t('learnMore')}
                 <ArrowIcon className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Link>
+              </button>
             </div>
           </div>
         </div>
